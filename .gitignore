@@ -1,0 +1,35 @@
+## Python bytecode & caches
+__pycache__/
+*.py[cod]
+*$py.class
+.mypy_cache/
+.pytest_cache/
+.cache/
+.ruff_cache/
+
+## Virtual environments & env files
+.venv/
+venv/
+.env
+
+## Packaging artifacts
+build/
+dist/
+.eggs/
+*.egg-info/
+src/slack_graph.egg-info/
+
+## OS/editor noise
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+## Project runtime data & outputs
+data/
+output/
+tmp-exp/
+notebooks/.ipynb_checkpoints/
+
+## Captured logs (Slack NDJSON dumps)
+slack-*.ndjson

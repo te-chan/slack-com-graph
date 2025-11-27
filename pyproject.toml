@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "slack-graph"
+version = "0.1.0"
+description = "Slack workspace relationship graph CLI"
+requires-python = ">=3.10"
+dependencies = [
+  "networkx>=3.2",
+  "typer>=0.9",
+  "python-dotenv>=1.0",
+]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["slack_graph*"]
