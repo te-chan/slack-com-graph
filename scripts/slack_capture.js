@@ -49,7 +49,7 @@
     maxLogSize: 10000,
     excludeHeaders: ["authorization", "cookie", "x-slack-req-resource", "x-xss-protection"],
     maskTokens: true,
-    userCaptureEnabled: false,
+    userCaptureEnabled: true,
     verbose: false,
   };
 
@@ -626,6 +626,6 @@
   console.log("slack capture: installed. API at window._slackCapture");
   console.log("  - status(): check capture status");
   console.log("  - download(): save captured API calls");
-  console.log("  - enableUserCapture(): start collecting user info");
+  console.log("  - downloadUsers(): save collected user info");
   console.log("  - setConfig({ verbose: true }): enable debug logging");
 })();
