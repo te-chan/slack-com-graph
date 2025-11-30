@@ -25,7 +25,7 @@ Slack Workspace Relationship Graph
 - `real_name`: 本名（存在する場合）
 
 注意事項
-- 取得したNDJSONにはトークン等の機微情報が含まれ得ます。取り扱いに注意してください。
+- キャプチャスクリプトはセキュリティ対策済み（トークン自動マスク、機微ヘッダー除外）ですが、出力ファイルの取り扱いには引き続き注意してください。
 - ネットワークアクセスを伴うAPI取得機能は削除し、Webクライアントのログ取り込みに一本化しています。
 
 構成
@@ -37,5 +37,26 @@ Slack Workspace Relationship Graph
 Webクライアントからの記録（コンソール実行）
 - SlackのWebページ上で動作しているAPI呼び出し（`/api/*`）を横取り・記録するスニペットを用意しています。
 - ブラウザの開発者ツール Console に `scripts/slack_capture.js` を貼り付けて実行してください。
-- Users情報を集約するフック（任意）: `scripts/hooks/users_capture.js` を追加で実行し、`_slackUsersHook.processCaptured()` → `_slackUsersHook.download()`。
+
+slack_capture.js の主要API:
+```javascript
+// ステータス確認（ログ数、ユーザー数、メモリ使用量）
+_slackCapture.status()
+
+// 設定変更（デバッグログ有効化、ログ上限変更など）
+_slackCapture.setConfig({ verbose: true, maxLogSize: 5000 })
+
+// APIログをNDJSONでダウンロード
+_slackCapture.download()
+
+// ユーザー収集モードを有効化（APIレスポンスからユーザー情報を自動抽出）
+_slackCapture.enableUserCapture()
+
+// 収集したユーザー情報をダウンロード
+_slackCapture.downloadUsers()
+
+// キャプチャ停止（fetch/XHRフックを解除）
+_slackCapture.stop()
+```
+
 - 詳細な使い方は `docs/slack_capture.md` を参照。
